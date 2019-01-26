@@ -20,7 +20,7 @@ public class Umbralla : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().handlingUmbrella = true;
+            collision.gameObject.GetComponent<Player>().umbrella = true;
 
             Destroy(gameObject);
         }

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
+    //是否持有伞
+    [HideInInspector] public bool umbrella = false;
     //是否持有书房钥匙
     [HideInInspector]public bool studykey = false;
     //是否持有大门钥匙
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        UmbrallaControll();
     }
 
     public void RecivedDamage(float damage)
@@ -52,8 +55,14 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y);
             
         }
+    }
 
-
+    private void UmbrallaControll()
+    {
+        if (umbrella&&Input.GetKey(KeyCode.J))
+        {
+            handlingUmbrella = true;
+        }
     }
 
     void Die()
