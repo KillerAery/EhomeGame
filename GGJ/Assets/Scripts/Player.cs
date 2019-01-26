@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        animator.SetFloat("Walk", Mathf.Abs(x) + Mathf.Abs(y));
+        //animator.SetFloat("Walk", Mathf.Abs(x) + Mathf.Abs(y));
         rigidbody2D.velocity = Vector3.up * y * moveSpeed + Vector3.right * x * moveSpeed;
         if (Mathf.Abs(x) >= 0.01f)
         {
