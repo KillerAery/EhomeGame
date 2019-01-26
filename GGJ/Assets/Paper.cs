@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gate : MonoBehaviour
+public class Paper : MonoBehaviour
 {
     public GameObject tip;
     private TextManager textManager;
@@ -19,28 +19,21 @@ public class Gate : MonoBehaviour
 
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             tip.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                var player = collision.gameObject.GetComponent<Player>();
-                if (player.gatekey == true)
-                {
-                    textManager.ShowText("我成功逃离了吗..");
-                }
-                else
-                {
-                    textManager.ShowText("大门锁上了，我开不了。");
-                }
+                textManager.ShowText("纸条上写着..");
+                tip.SetActive(false);
             }
         }
     }
-
-    public void OnCollisionExit2D(Collision2D collision)
+    public void OnTriggerExit2D(Collider2D collision)
     {
         tip.SetActive(false);
     }
+
 }
