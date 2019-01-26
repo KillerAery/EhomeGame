@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float attackDistance;
     public float v = 2;
     private float k = 2;
+    private float attackForce = 50;
     //辅助
     private Transform target;//玩家位置
     public bool isAngry;
@@ -33,9 +34,11 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (attackForce <= 0) Die();
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().RecivedDamage(2.0f);
+            attackForce -= 2.0f;
         }
     }
 
