@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\WoodBox.cs" />
     <Compile Include="Assets\StudyKeyUIEvent.cs" />
     <Compile Include="Assets\TextManager.cs" />
+    <Compile Include="Assets\TilemapCoverHelper.cs" />
     <Compile Include="Assets\Umbralla.cs" />
     <Compile Include="Assets\UmbrallaUIEvent.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
