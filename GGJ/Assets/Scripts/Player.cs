@@ -10,11 +10,15 @@ public class Player : MonoBehaviour
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
 
+    private new Rigidbody2D rigidbody2D;
+    private Animator animator;
+
     private int direction = 1;
 
     void Start()
     {
-        
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     void Update()
@@ -35,16 +39,17 @@ public class Player : MonoBehaviour
     private void Move()
     {
         float x = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * x * moveSpeed * Time.deltaTime, Space.World);
+        float y = Input.GetAxis("Vertical");
+        animator.SetFloat("Walk", Mathf.Abs(x) + Mathf.Abs(y));
+        rigidbody2D.velocity = Vector3.up * y * moveSpeed + Vector3.right * x * moveSpeed;
         if (Mathf.Abs(x) >= 0.01f)
         {
-            direction = (int)Mathf.Sign(x);
+            direction = -(int)Mathf.Sign(x);
             transform.localScale = new Vector2(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y);
             
         }
 
-        float y = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * y * moveSpeed * Time.deltaTime, Space.World);
+
     }
 
     void Die()
