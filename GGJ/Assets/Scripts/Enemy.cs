@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     public float attackDistance;
     public float v = 2;
     private float k = 2;
-    private SpriteRenderer sp;
     //辅助
     private Transform target;//玩家位置
     public bool isAngry;
@@ -19,67 +18,29 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        sp = GetComponent<SpriteRenderer>();
     }
-
-
 
     void Update()
     {
         Vector3 dr = target.position - transform.position;
         dr = dr.normalized;
-        dr.y = 0;
         transform.Translate(dr * k * moveSpeed * Time.deltaTime, Space.World);
-        Move();
+        //Move();
         //移动时根据朝向flip
-        //if (Mathf.Abs(dr.x) >= 0.01f)
-        //    transform.localScale = new Vector2(Mathf.Sign(dr.x) * -1.0f, transform.localScale.y);
+        if (Mathf.Abs(dr.x) >= 0.01f)
+          transform.localScale = new Vector2(Mathf.Sign(dr.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
     }
 
-    private void Move()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        //判断距离
-        if (Vector3.Distance(target.position, transform.position) <= attackDistance)
+        if(collision.gameObject.tag == "Player")
         {
-            isAngry = true;
+            collision.gameObject.GetComponent<Player>().RecivedDamage(2.0f);
         }
-        else if (Vector3.Distance(target.position, transform.position) > attackDistance || transform.position.x > Max || transform.position.x < Min)
-        {
-            isAngry = false;
-        }
+    }
 
-
-        if (!isAngry)
-        {
-            if (transform.position.x >= Max)
-            {
-                k = -v;
-                sp.flipX = true;
-            }
-            else if (transform.position.x <= Min)
-            {
-                k = v;
-                sp.flipX = false;
-            }
-
-        }
-        else
-        {
-            if (target.position.x > transform.position.x)
-            {
-                k = 2 * v;
-                sp.flipX = false;
-            }
-            else if (target.position.x < transform.position.x)
-            {
-                k = -2 * v;
-                sp.flipX = true;
-            }
-            else
-            {
-                k = 0;
-            }
-
-        }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
