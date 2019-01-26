@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class QuarterView : MonoBehaviour
 {
     public Transform target;
-    public float Max;
-    public float Min;
+    public float xMax;
+    public float xMin;
+    public float yMax;
+    public float yMin;
     private Vector2 offset;     //相机与人物偏移量
     private Vector2 ve;
     void Start()
@@ -17,11 +19,16 @@ public class Camera : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position.x >= Min && transform.position.x <= Max)
+
+        if (transform.position.x >= xMin && transform.position.x <= xMax && transform.position.y >= yMin && transform.position.y <= yMax)
         {
             Vector3 s = Vector2.SmoothDamp(transform.position, target.position, ref ve, 0.5f);
+            s.x = Mathf.Clamp(s.x, xMin, xMax);
+            s.y = Mathf.Clamp(s.y, yMin, yMax);
             s.z = transform.position.z;
             transform.position = s;
+
         }
+       
     }
 }
