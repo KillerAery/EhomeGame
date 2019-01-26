@@ -62,8 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\BathEvent.cs" />
     <Compile Include="Assets\ContainerGrandParent.cs" />
+    <Compile Include="Assets\EnemyEvent.cs" />
     <Compile Include="Assets\Gate.cs" />
     <Compile Include="Assets\GateKeyUIEvent.cs" />
+    <Compile Include="Assets\NormalDoor.cs" />
     <Compile Include="Assets\Paper.cs" />
     <Compile Include="Assets\Scarf.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -71,6 +73,8 @@
     <Compile Include="Assets\Scripts\QuarterView.cs" />
     <Compile Include="Assets\Scripts\Wardrobe.cs" />
     <Compile Include="Assets\Scripts\WoodBox.cs" />
+    <Compile Include="Assets\SpriteCoverHelper.cs" />
+    <Compile Include="Assets\StudyDoor.cs" />
     <Compile Include="Assets\StudyKeyUIEvent.cs" />
     <Compile Include="Assets\TextManager.cs" />
     <Compile Include="Assets\TilemapCoverHelper.cs" />
