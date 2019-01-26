@@ -29,8 +29,7 @@ public class Wardrobe : MonoBehaviour
 
     public void Open()
     {
-        //Instantiate(enemy, transform.position, Quaternion.identity);
-        
+        Instantiate(enemy, transform.position, Quaternion.identity);
         ima.SetActive(true);
         inp.SetActive(true);//"你发现了一个木箱"
         textManager.ShowText("你发现了一个木箱");
