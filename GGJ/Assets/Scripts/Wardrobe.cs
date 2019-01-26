@@ -7,17 +7,18 @@ public class Wardrobe : MonoBehaviour
 {
     public bool isOpened=false;
     public GameObject enemy;
-    //public GameObject woodBox;
-    public GameObject tex;
+    
+    
     public GameObject ima;
     public GameObject inp;
-    public Text text;
+    
     public Image image;
     public InputField inputField;
     public string password = "0606";
+    private TextManager textManager;
     void Start()
     {
-        
+        textManager = GameObject.FindGameObjectWithTag("TextManager").GetComponent<TextManager>();
     }
 
     
@@ -29,11 +30,11 @@ public class Wardrobe : MonoBehaviour
     public void Open()
     {
         //Instantiate(enemy, transform.position, Quaternion.identity);
-        tex.SetActive(true);
-        ima.SetActive(true);
-        inp.SetActive(true);
-        text.text = "你发现了一个木箱";
         
+        ima.SetActive(true);
+        inp.SetActive(true);//"你发现了一个木箱"
+        textManager.ShowText("你发现了一个木箱");
+
         isOpened = true;
     }
 
@@ -50,7 +51,8 @@ public class Wardrobe : MonoBehaviour
         //
         if (str == password)
         {
-            text.text = "你发现了一条奇怪的围巾";
+            
+            textManager.ShowText("你发现了一条奇怪的围巾");
         }
         
         
