@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BathEvent.cs" />
+    <Compile Include="Assets\ContainerGrandParent.cs" />
+    <Compile Include="Assets\Gate.cs" />
     <Compile Include="Assets\Scarf.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
