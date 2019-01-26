@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
 
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
+    //是否持有书房钥匙
+    [HideInInspector]public bool studykey = false;
+    //是否持有大门钥匙
+    [HideInInspector] public bool gatekey = false;
 
     private new Rigidbody2D rigidbody2D;
     private Animator animator;
