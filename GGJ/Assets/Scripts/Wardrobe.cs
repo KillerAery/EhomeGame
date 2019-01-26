@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wardrobe : MonoBehaviour
 {
     public bool isOpened=false;
     public GameObject enemy;
-    public GameObject woodBox;
-
+    //public GameObject woodBox;
+    public GameObject tex;
+    public GameObject ima;
+    public GameObject inp;
+    public Text text;
+    public Image image;
+    public InputField inputField;
+    public string password = "0606";
     void Start()
     {
         
@@ -22,7 +29,11 @@ public class Wardrobe : MonoBehaviour
     public void Open()
     {
         //Instantiate(enemy, transform.position, Quaternion.identity);
-        woodBox.SendMessage("toOpen");
+        tex.SetActive(true);
+        ima.SetActive(true);
+        inp.SetActive(true);
+        text.text = "你发现了一个木箱";
+        
         isOpened = true;
     }
 
@@ -36,16 +47,12 @@ public class Wardrobe : MonoBehaviour
 
     public void toOpen(string str)
     {
-
-        tex.SetActive(true);
-        ima.SetActive(true);
-        inp.SetActive(true);
-        text.text = "你发现了一个木箱";
+        //
         if (str == password)
         {
-            Debug.Log("right");
-
+            text.text = "你发现了一条奇怪的围巾";
         }
-
+        
+        
     }
 }

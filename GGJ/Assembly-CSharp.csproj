@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\QuarterView.cs" />
     <Compile Include="Assets\Scripts\Wardrobe.cs" />
     <Compile Include="Assets\Scripts\WoodBox.cs" />
+    <Compile Include="Assets\TextManager.cs" />
     <Compile Include="Assets\Umbralla.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/lenovo/Desktop/ggj/GGJ/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
