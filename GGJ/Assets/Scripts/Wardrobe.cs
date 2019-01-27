@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class Wardrobe : MonoBehaviour
 {
-    public bool isOpened=false;
-    public GameObject enemy;
-    
-    
-    public GameObject ima;
-    public GameObject inp;
-    
-    public Image image;
-    public InputField inputField;
+    //值
     public string password = "0606";
+    //辅助
+    public GameObject enemy;
+    public GameObject player;
+    public GameObject inp;
+    public InputField inputField;
     private TextManager textManager;
+    public bool empty = false;
+    public GameObject tip;
     void Start()
     {
         textManager = GameObject.FindGameObjectWithTag("TextManager").GetComponent<TextManager>();
@@ -29,31 +28,66 @@ public class Wardrobe : MonoBehaviour
 
     public void Open()
     {
+        
         Instantiate(enemy, transform.position, Quaternion.identity);
-        ima.SetActive(true);
+        
         inp.SetActive(true);//"你发现了一个木箱"
         textManager.ShowText("你发现了一个木箱");
 
-        isOpened = true;
+        empty = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!isOpened&&collision.collider.tag=="Player")
+        if (empty) return;
+        if (collision.collider.tag=="Player")
         {
-            Open();
+            tip.SetActive(true);
+            if(Input.GetKey(KeyCode.E))
+            {
+                Open();
+                tip.SetActive(false);
+            }
+            
         }
     }
 
-    public void toOpen(string str)
+    public void toOpen()
     {
         //
-        if (str == password)
+        if (inputField.text == password)
         {
             
             textManager.ShowText("你发现了一条奇怪的围巾");
+            StartCoroutine(Memory());
         }
         
         
+    }
+
+    IEnumerator Memory()
+    {
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("这不是我曾经在母亲生日时编织的送给她的生日礼物吗？");
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("我当时觉得太丑了，以为母亲会把它随手一丢");
+
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("母亲竟然如此认真地保留到现在");
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("为什么呢？这到底为什么？");
+
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("头脑中突然闪过无数母亲照顾生病时我的画面");
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("母亲对我一直是如此，我却忽视了");
+
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("家这个词仿佛在心中熟悉了一点");
+        yield return new WaitForSeconds(5f);
+        textManager.ShowText("心中仿佛变温暖了一些");
+        player.SendMessage("Strengthen",25);
+
+        yield return null;
     }
 }

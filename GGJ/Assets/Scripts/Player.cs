@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Strengthen(float number)
+    {
+        health -= number;
+    }
+
     void Die()
     {
         Destroy(gameObject);
