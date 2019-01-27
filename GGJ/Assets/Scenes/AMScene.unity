@@ -685,7 +685,7 @@ MonoBehaviour:
   password: 0606
   enemy: {fileID: 3542676908778155212, guid: 1f2f66060024f0f4b90013774ff3e6f2, type: 3}
   player: {fileID: 371968819}
-  inp: {fileID: 0}
+  inp: {fileID: 1077901599}
   inputField: {fileID: 1077901601}
   empty: 0
   tip: {fileID: 2070131941}
@@ -924,6 +924,7 @@ RectTransform:
   - {fileID: 1077901600}
   - {fileID: 1318196080}
   - {fileID: 640084472}
+  - {fileID: 1529094445}
   m_Father: {fileID: 908638344}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2969,6 +2970,7 @@ GameObject:
   - component: {fileID: 371968822}
   - component: {fileID: 371968821}
   - component: {fileID: 371968825}
+  - component: {fileID: 371968826}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -3082,11 +3084,107 @@ MonoBehaviour:
   pointLight: {fileID: 136252599}
   dieParticle: {fileID: 8966337869550197113, guid: e2b517c97871efb4395c5c2c48be9adb,
     type: 3}
-  moveAudio: {fileID: 371968825}
+  moveAudio:
+  - {fileID: 371968825}
   Audio:
-  - {fileID: 8300000, guid: a1a526002cdf9754496b7d5b7e43549a, type: 3}
-  - {fileID: 8300000, guid: b33e19b26fbac0e4b918d872d9cbc837, type: 3}
+  - {fileID: 8300000, guid: 261f01b8c82d1aa46903f952210b10ec, type: 3}
 --- !u!82 &371968825
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371968819}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &371968826
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4228,7 +4326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531705153}
   m_Layer: 0
-  m_Name: Sprites
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5289,6 +5387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tip: {fileID: 948806567}
+  ending: {fileID: 0}
+  source: {fileID: 0}
 --- !u!61 &659992487
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21175,8 +21275,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1398378301}
   - component: {fileID: 1398378304}
-  - component: {fileID: 1398378303}
   - component: {fileID: 1398378302}
+  - component: {fileID: 1398378303}
   m_Layer: 0
   m_Name: strongbox
   m_TagString: Untagged
@@ -21230,7 +21330,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07700014, y: -0.13379586}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -21241,7 +21341,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.056664, y: 4.0975914}
+  m_Size: {x: 2.8, y: 3.83}
   m_EdgeRadius: 0
 --- !u!212 &1398378304
 SpriteRenderer:
@@ -22209,7 +22309,7 @@ RectTransform:
   - {fileID: 1322463499}
   - {fileID: 1204670176}
   m_Father: {fileID: 120617543}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

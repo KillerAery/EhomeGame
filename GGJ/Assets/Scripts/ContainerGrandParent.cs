@@ -46,6 +46,7 @@ public class ContainerGrandParent : MonoBehaviour
                 }
                 else if (amulet) {
                     textManager.ShowText("一个护身符.");
+                    player.ambut = true;
                     player.health += 20;
                     StartCoroutine(Memory());
                     Destroy(barrier);
@@ -80,11 +81,7 @@ public class ContainerGrandParent : MonoBehaviour
         yield return new WaitForSeconds(3f);
         textManager.ShowText("那时的我是失去理智了吗。。。奶奶那么幸苦求来的");
         yield return new WaitForSeconds(3f);
-        textManager.ShowText("奶奶对不起，我一定伤了您的心了吧。");
-
-        yield return new WaitForSeconds(3f);
-        textManager.ShowText("家这个词，我仿佛更能理解了");
-      
+        textManager.ShowText("奶奶对不起，我一定伤了您的心了吧。"); 
         
         yield return null;
     }

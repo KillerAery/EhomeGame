@@ -32,8 +32,7 @@ public class Gate : MonoBehaviour
                 if (player.gatekey == true)
                 {
                     textManager.ShowText("我成功逃离了吗..");
-                    ending.SetActive(true);
-                    source.Stop();
+                    StartCoroutine(EndGame());
                 }
                 else
                 {
@@ -47,4 +46,12 @@ public class Gate : MonoBehaviour
     {
         tip.SetActive(false);
     }
+
+    IEnumerator EndGame()
+    {
+        for (float timer = 2.0f; timer >= 0; timer -= Time.deltaTime)
+            yield return 0;
+        Application.Quit();
+    }
+
 }

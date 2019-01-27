@@ -7,7 +7,7 @@ public class Umbralla : MonoBehaviour
     private TextManager textManager;
     void Start()
     {
-        
+        textManager = GameObject.FindGameObjectWithTag("TextManager").GetComponent<TextManager>();
     }
 
     // Update is called once per frame

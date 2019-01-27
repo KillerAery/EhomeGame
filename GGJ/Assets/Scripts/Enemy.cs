@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            float d = 1.0f;
+            float d = 2.0f;
             damage += d;
             collision.gameObject.GetComponent<Player>().RecivedDamage(d);
             if (damage >= maxdamage)

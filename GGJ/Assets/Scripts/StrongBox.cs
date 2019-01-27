@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class StrongBox : MonoBehaviour
 {
     public string password = "2333";
@@ -23,9 +24,9 @@ public class StrongBox : MonoBehaviour
         
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             tip.SetActive(true);
             if (Input.GetKey(KeyCode.E))
@@ -33,7 +34,27 @@ public class StrongBox : MonoBehaviour
                 if (empty)
                 {
                     textManager.ShowText("这什么都没有。");
-                    return;
+                }
+                else
+                {
+                    inp.SetActive(true);
+                }
+            }
+            tip.SetActive(false);
+            inp.SetActive(false);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            tip.SetActive(true);
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (empty)
+                {
+                    textManager.ShowText("这什么都没有。");
                 }
                 else
                 {

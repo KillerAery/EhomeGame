@@ -80,11 +80,6 @@ public class Player : MonoBehaviour
                 moveAudio[0].Play();
             }
 
-            moveAudio[1].clip = Audio[1];
-            if (!moveAudio[1].isPlaying)
-            {
-                moveAudio[1].Play();
-            }
         }
         if (Mathf.Abs(y) >= 0.01f)
         {
@@ -96,11 +91,6 @@ public class Player : MonoBehaviour
                 moveAudio[0].Play();
             }
 
-            moveAudio[1].clip = Audio[1];
-            if (!moveAudio[1].isPlaying)
-            {
-                moveAudio[1].Play();
-            }
         }
     }
 
@@ -118,17 +108,20 @@ public class Player : MonoBehaviour
 
     public void Strengthen(float number)
     {
-        health -= number;
-        if (health <= 0.0f)
-        {
-            health = 0.0f;
-            Die();
-        }
+        health += number;
     }
 
     void Die()
     {
         Instantiate(dieParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        for (float timer = 2.0f; timer >= 0; timer -= Time.deltaTime)
+            yield return 0;
+        Application.Quit();
     }
 }

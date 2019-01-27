@@ -40,14 +40,14 @@ public class Wardrobe : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (empty) return;
+
         if (collision.collider.tag=="Player")
         {
             tip.SetActive(true);
             if(Input.GetKey(KeyCode.E))
             {
-                inp.SetActive(false);
+                inp.SetActive(true);
                 Open();
-                
             }
             tip.SetActive(false);
         }
@@ -58,7 +58,7 @@ public class Wardrobe : MonoBehaviour
         //
         if (inputField.text == password)
         {
-            
+            inp.SetActive(false);
             textManager.ShowText("一条奇怪的围巾");
 
             StartCoroutine(Memory());
