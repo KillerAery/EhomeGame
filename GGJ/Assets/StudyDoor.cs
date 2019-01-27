@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class StudyDoor : MonoBehaviour
 {
-    public GameObject tip;
     public Sprite openSprite;
+    public Sprite closeSprite;
     private TextManager textManager;
     private SpriteRenderer spriteRenderer;
     public AudioClip Audio;//获取音效
+    
+    public bool opening = false;
+    
+    public new BoxCollider2D collider2D;
+
     //Start is called before the first frame update
     void Start()
     {
@@ -22,13 +27,17 @@ public class StudyDoor : MonoBehaviour
 
     }
 
+
     public void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            tip.SetActive(true);
-            if (Input.GetKey(KeyCode.E))
+            if (!opening && Input.GetKeyDown(KeyCode.E))
             {
+                opening = true;
+                spriteRenderer.sprite = openSprite;
+                collider2D.enabled = false;
+
                 var player = collision.gameObject.GetComponent<Player>();
                 if (player.studykey == true)
                 {
@@ -44,8 +53,17 @@ public class StudyDoor : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        tip.SetActive(false);
+        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        {
+            if (opening)
+            {
+                opening = false;
+                spriteRenderer.sprite = closeSprite;
+                collider2D.enabled = true;
+            }
+        }
     }
 }
