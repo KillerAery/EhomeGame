@@ -8,7 +8,7 @@ public class StudyDoor : MonoBehaviour
     public Sprite openSprite;
     private TextManager textManager;
     private SpriteRenderer spriteRenderer;
-
+    public AudioClip Audio;//获取音效
     //Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,7 @@ public class StudyDoor : MonoBehaviour
                 var player = collision.gameObject.GetComponent<Player>();
                 if (player.studykey == true)
                 {
+                    AudioSource.PlayClipAtPoint(Audio, transform.position);
                     textManager.ShowText("看来很顺利开了书房的锁。");
                     spriteRenderer.sprite = openSprite;
                 }
