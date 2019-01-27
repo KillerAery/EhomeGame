@@ -7,6 +7,7 @@ public class NormalDoor : MonoBehaviour
     public Sprite openSprite;
     public Sprite closeSprite;
     public bool opening = false;
+    public AudioClip Audio;//获取音效
 
     private SpriteRenderer spriteRenderer;
     public new BoxCollider2D collider2D;
@@ -30,6 +31,7 @@ public class NormalDoor : MonoBehaviour
             if (!opening)
             {
                 opening = true;
+                AudioSource.PlayClipAtPoint(Audio, transform.position);
                 spriteRenderer.sprite = openSprite;
                 collider2D.enabled = false;
             }

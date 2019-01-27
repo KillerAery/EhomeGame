@@ -15,14 +15,25 @@ public class Enemy : MonoBehaviour
     //辅助
     private Transform target;//玩家位置
     public bool isAngry;
-
+    public AudioSource moveAudio;
+    public AudioClip[] Audio;//多个音效
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        moveAudio.clip = Audio[0];
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.Play();
+        }
     }
 
     void Update()
     {
+        moveAudio.clip = Audio[1];
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.Play();
+        }
         Vector3 dr = target.position - transform.position;
         dr = dr.normalized;
         transform.Translate(dr * k * moveSpeed * Time.deltaTime, Space.World);
