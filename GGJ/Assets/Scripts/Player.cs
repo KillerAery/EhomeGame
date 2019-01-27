@@ -48,12 +48,12 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         //animator.SetFloat("Walk", Mathf.Abs(x) + Mathf.Abs(y));
-        rigidbody2D.velocity = Vector3.up * y * moveSpeed + Vector3.right * x * moveSpeed;
+        var v = new Vector2(x * moveSpeed, y * moveSpeed);
+        rigidbody2D.velocity = v;
         if (Mathf.Abs(x) >= 0.01f)
         {
             direction = -(int)Mathf.Sign(x);
-            transform.localScale = new Vector2(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y);
-            
+            transform.localScale = new Vector3(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }
 
