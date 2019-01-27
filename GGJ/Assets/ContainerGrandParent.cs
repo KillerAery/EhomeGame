@@ -46,6 +46,7 @@ public class ContainerGrandParent : MonoBehaviour
                 }
                 else if (amulet) {
                     textManager.ShowText("一个护身符。想起来这是奶奶给我高考前买的...balabala");
+                    player.ambut = true;
                     Destroy(barrier);
                 }
                 else

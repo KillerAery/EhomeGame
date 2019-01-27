@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
+    //是否持有护身符
+    [HideInInspector] public bool ambut = false;
     //是否持有伞
     [HideInInspector] public bool umbrella = false;
     //是否持有书房钥匙
@@ -24,13 +26,18 @@ public class Player : MonoBehaviour
     private float init_intensity;
     private int direction = 1;
 
+    public GameObject dieParticle;
+
     public AudioSource moveAudio;
     public AudioClip[] Audio;//多个音效
+    private DragonBones.UnityArmatureComponent unityArmature;//UnityArmatureComponent对象
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        unityArmature = GetComponent<DragonBones.UnityArmatureComponent>();//获得UnityArmatureComponent对象
+                                                                           //unityArmature.
         init_intensity = pointLight.intensity;
     }
     
@@ -49,6 +56,12 @@ public class Player : MonoBehaviour
 
     public void RecivedDamage(float damage)
     {
+        health -= damage;
+        if(health <= 0.0f)
+        {
+            health = 0.0f;
+            Die();
+        }
     }
 
     private void Move()
@@ -95,10 +108,16 @@ public class Player : MonoBehaviour
     public void Strengthen(float number)
     {
         health -= number;
+        if (health <= 0.0f)
+        {
+            health = 0.0f;
+            Die();
+        }
     }
 
     void Die()
     {
+        Instantiate(dieParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
