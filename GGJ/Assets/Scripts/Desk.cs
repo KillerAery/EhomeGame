@@ -31,6 +31,6 @@ public class Desk : MonoBehaviour
 
     public void Open()
     {
-        textManager.ShowText("抽屉里有本日记，上面写着：6月6日即将生日");
+        textManager.ShowText("抽屉里有本日记，上面写着：6月6日生日，而明天便是高考，哪有心思过什么生日");
     }
 }
