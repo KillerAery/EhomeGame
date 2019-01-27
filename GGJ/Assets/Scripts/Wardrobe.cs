@@ -45,10 +45,11 @@ public class Wardrobe : MonoBehaviour
             tip.SetActive(true);
             if(Input.GetKey(KeyCode.E))
             {
+                inp.SetActive(false);
                 Open();
-                tip.SetActive(false);
+                
             }
-            
+            tip.SetActive(false);
         }
     }
 
@@ -58,7 +59,7 @@ public class Wardrobe : MonoBehaviour
         if (inputField.text == password)
         {
             
-            textManager.ShowText("你发现了一条奇怪的围巾");
+            textManager.ShowText("一条奇怪的围巾");
             StartCoroutine(Memory());
         }
         
@@ -73,9 +74,9 @@ public class Wardrobe : MonoBehaviour
         textManager.ShowText("我当时觉得太丑了，以为母亲会把它随手一丢");
 
         yield return new WaitForSeconds(5f);
-        textManager.ShowText("母亲竟然如此认真地保留到现在");
+        textManager.ShowText("母亲当时很高兴地收下了，而且竟然如此认真地保留到现在");
         yield return new WaitForSeconds(5f);
-        textManager.ShowText("为什么呢？这到底为什么？");
+        textManager.ShowText("而母亲今晚送我的生日礼物我却因为焦虑烦躁而草草扔在一旁");
 
         yield return new WaitForSeconds(5f);
         textManager.ShowText("头脑中突然闪过无数母亲照顾生病时我的画面");

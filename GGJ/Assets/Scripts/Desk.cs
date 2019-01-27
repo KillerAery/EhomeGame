@@ -24,8 +24,9 @@ public class Desk : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Open();
-                tip.SetActive(false);
+                
             }
+            tip.SetActive(false);
         }
     }
 

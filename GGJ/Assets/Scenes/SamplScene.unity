@@ -563,6 +563,7 @@ MonoBehaviour:
   amulet: 0
   key: 0
   empty: 0
+  barrier: {fileID: 0}
   tip: {fileID: 1255892764}
 --- !u!1 &145797841
 GameObject:
@@ -4370,7 +4371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a74e2a1b6f11c143a1efa3b7a974da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tip: {fileID: 0}
+  tip: {fileID: 226175780}
 --- !u!212 &330536185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4644,6 +4645,10 @@ MonoBehaviour:
   umbrella: 0
   studykey: 0
   gatekey: 0
+  Umbrella: {fileID: 0}
+  pointLight: {fileID: 0}
+  moveAudio: {fileID: 0}
+  Audio: []
 --- !u!1 &388329828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5582,6 +5587,7 @@ MonoBehaviour:
   amulet: 0
   key: 1
   empty: 0
+  barrier: {fileID: 0}
   tip: {fileID: 502572970}
 --- !u!1 &506658244
 GameObject:
@@ -6919,6 +6925,7 @@ MonoBehaviour:
   amulet: 1
   key: 0
   empty: 0
+  barrier: {fileID: 0}
   tip: {fileID: 1726461462}
 --- !u!1 &856653978
 GameObject:
@@ -22176,6 +22183,7 @@ MonoBehaviour:
   amulet: 0
   key: 0
   empty: 0
+  barrier: {fileID: 0}
   tip: {fileID: 971165125}
 --- !u!1 &1679581058
 GameObject:
@@ -22311,7 +22319,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1709429360
@@ -23158,7 +23166,7 @@ SpriteRenderer:
   m_Size: {x: 0.7, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1873967088
@@ -23179,6 +23187,9 @@ MonoBehaviour:
   attackDistance: 0
   v: 2
   isAngry: 0
+  moveAudio: {fileID: 0}
+  Audio: []
+  maxdamage: 50
 --- !u!1 &1933471838
 GameObject:
   m_ObjectHideFlags: 0
@@ -23307,7 +23318,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1976472031
