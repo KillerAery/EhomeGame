@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private float init_intensity;
     private int direction = 1;
 
-    public AudioSource moveAudio;
+    public AudioSource[] moveAudio;
     public AudioClip[] Audio;//多个音效
 
     void Start()
@@ -36,11 +36,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        moveAudio.clip = Audio[1];
-        if (!moveAudio.isPlaying)
-        {
-            moveAudio.Play();
-        }
+       
         pointLight.intensity = init_intensity * (health / 100.0f);
         Move();
         UmbrallaControll();
@@ -63,19 +59,34 @@ public class Player : MonoBehaviour
         {
             direction = -(int)Mathf.Sign(x);
             transform.localScale = new Vector3(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            moveAudio.clip = Audio[0];
-            if (!moveAudio.isPlaying)
+            //AudioSource.PlayClipAtPoint(Audio[0], transform.position);
+            //AudioSource.PlayClipAtPoint(Audio[1], transform.position);
+            moveAudio[0].clip = Audio[0];
+            if (!moveAudio[0].isPlaying)
             {
-                moveAudio.Play();
+                moveAudio[0].Play();
             }
 
+            moveAudio[1].clip = Audio[1];
+            if (!moveAudio[1].isPlaying)
+            {
+                moveAudio[1].Play();
+            }
         }
         if (Mathf.Abs(y) >= 0.01f)
         {
-            moveAudio.clip = Audio[0];
-            if (!moveAudio.isPlaying)
+            //AudioSource.PlayClipAtPoint(Audio[0], transform.position);
+            //AudioSource.PlayClipAtPoint(Audio[1], transform.position);
+            moveAudio[0].clip = Audio[0];
+            if (!moveAudio[0].isPlaying)
             {
-                moveAudio.Play();
+                moveAudio[0].Play();
+            }
+
+            moveAudio[1].clip = Audio[1];
+            if (!moveAudio[1].isPlaying)
+            {
+                moveAudio[1].Play();
             }
         }
     }
