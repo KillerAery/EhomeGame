@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
 
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
+    //是否持有护身符
+    public bool ambut = false;
     //是否持有伞
-    [HideInInspector] public bool umbrella = false;
+    public bool umbrella = false;
     //是否持有书房钥匙
-    [HideInInspector]public bool studykey = false;
+    public bool studykey = false;
     //是否持有大门钥匙
-    [HideInInspector] public bool gatekey = false;
+     public bool gatekey = false;
 
     public GameObject Umbrella;
     public Light pointLight;
@@ -24,13 +26,18 @@ public class Player : MonoBehaviour
     private float init_intensity;
     private int direction = 1;
 
+    public GameObject dieParticle;
+
     public AudioSource[] moveAudio;
     public AudioClip[] Audio;//多个音效
+    private DragonBones.UnityArmatureComponent unityArmature;//UnityArmatureComponent对象
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        unityArmature = GetComponent<DragonBones.UnityArmatureComponent>();//获得UnityArmatureComponent对象
+                                                                           //unityArmature.
         init_intensity = pointLight.intensity;
     }
     
@@ -45,6 +52,12 @@ public class Player : MonoBehaviour
 
     public void RecivedDamage(float damage)
     {
+        health -= damage;
+        if(health <= 0.0f)
+        {
+            health = 0.0f;
+            Die();
+        }
     }
 
     private void Move()
@@ -67,11 +80,6 @@ public class Player : MonoBehaviour
                 moveAudio[0].Play();
             }
 
-            moveAudio[1].clip = Audio[1];
-            if (!moveAudio[1].isPlaying)
-            {
-                moveAudio[1].Play();
-            }
         }
         if (Mathf.Abs(y) >= 0.01f)
         {
@@ -83,11 +91,6 @@ public class Player : MonoBehaviour
                 moveAudio[0].Play();
             }
 
-            moveAudio[1].clip = Audio[1];
-            if (!moveAudio[1].isPlaying)
-            {
-                moveAudio[1].Play();
-            }
         }
     }
 
@@ -105,11 +108,20 @@ public class Player : MonoBehaviour
 
     public void Strengthen(float number)
     {
-        health -= number;
+        health += number;
     }
 
     void Die()
     {
+        Instantiate(dieParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        for (float timer = 2.0f; timer >= 0; timer -= Time.deltaTime)
+            yield return 0;
+        Application.Quit();
     }
 }

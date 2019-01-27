@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     public AudioSource moveAudio;
     public AudioClip[] Audio;
 
+    public GameObject dieParticle;
+
     public float maxdamage = 50.0f;
     private float damage = 0.0f;
 
@@ -30,6 +32,11 @@ public class Enemy : MonoBehaviour
             moveAudio.Play();
         }
         rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(Countdown());
     }
 
     void Update()
@@ -45,14 +52,14 @@ public class Enemy : MonoBehaviour
         }
         //移动时根据朝向flip
         if (Mathf.Abs(dr.x) >= 0.01f)
-          transform.localScale = new Vector2(Mathf.Sign(dr.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            transform.localScale = new Vector2(-Mathf.Sign(dr.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            float d = 1.0f;
+            float d = 2.0f;
             damage += d;
             collision.gameObject.GetComponent<Player>().RecivedDamage(d);
             if (damage >= maxdamage)
@@ -64,6 +71,14 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        Instantiate(dieParticle, transform.position,Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    IEnumerator Countdown()
+    {
+        for (float timer = 20.0f; timer >= 0; timer -= Time.deltaTime)
+            yield return 0;
+        Die();
     }
 }
