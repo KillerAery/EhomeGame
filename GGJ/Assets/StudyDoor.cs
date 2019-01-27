@@ -8,6 +8,7 @@ public class StudyDoor : MonoBehaviour
     public Sprite closeSprite;
     private TextManager textManager;
     private SpriteRenderer spriteRenderer;
+    public AudioClip Audio;//获取音效
     
     public bool opening = false;
     
@@ -40,6 +41,7 @@ public class StudyDoor : MonoBehaviour
                 var player = collision.gameObject.GetComponent<Player>();
                 if (player.studykey == true)
                 {
+                    AudioSource.PlayClipAtPoint(Audio, transform.position);
                     textManager.ShowText("看来很顺利开了书房的锁。");
                     spriteRenderer.sprite = openSprite;
                 }

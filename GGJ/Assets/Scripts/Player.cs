@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     private float init_intensity;
     private int direction = 1;
 
+    public AudioSource moveAudio;
+    public AudioClip[] Audio;//多个音效
+
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,6 +64,19 @@ public class Player : MonoBehaviour
         {
             direction = -(int)Mathf.Sign(x);
             transform.localScale = new Vector3(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            moveAudio.clip = Audio[0];
+            if (!moveAudio.isPlaying)
+            {
+                moveAudio.Play();
+            }
+        }
+        if (Mathf.Abs(y) >= 0.01f)
+        {
+            moveAudio.clip = Audio[0];
+            if (!moveAudio.isPlaying)
+            {
+                moveAudio.Play();
+            }
         }
     }
 

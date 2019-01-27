@@ -22,6 +22,11 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        moveAudio.clip = Audio[0];
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.Play();
+        }
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
