@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
     //是否正在握伞
     [HideInInspector]public bool handlingUmbrella = false;
     //是否持有护身符
-    [HideInInspector] public bool ambut = false;
+    public bool ambut = false;
     //是否持有伞
-    [HideInInspector] public bool umbrella = false;
+    public bool umbrella = false;
     //是否持有书房钥匙
-    [HideInInspector]public bool studykey = false;
+    public bool studykey = false;
     //是否持有大门钥匙
-    [HideInInspector] public bool gatekey = false;
+     public bool gatekey = false;
 
     public GameObject Umbrella;
     public Light pointLight;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     public GameObject dieParticle;
 
-    public AudioSource moveAudio;
+    public AudioSource[] moveAudio;
     public AudioClip[] Audio;//多个音效
     private DragonBones.UnityArmatureComponent unityArmature;//UnityArmatureComponent对象
 

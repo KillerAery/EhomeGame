@@ -6,6 +6,8 @@ public class Gate : MonoBehaviour
 {
     public GameObject tip;
     private TextManager textManager;
+    public GameObject ending;
+    public AudioSource source;
 
     //Start is called before the first frame update
     void Start()
@@ -30,6 +32,8 @@ public class Gate : MonoBehaviour
                 if (player.gatekey == true)
                 {
                     textManager.ShowText("我成功逃离了吗..");
+                    ending.SetActive(true);
+                    source.Stop();
                 }
                 else
                 {

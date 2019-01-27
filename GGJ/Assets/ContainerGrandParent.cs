@@ -46,6 +46,7 @@ public class ContainerGrandParent : MonoBehaviour
                 }
                 else if (amulet) {
                     textManager.ShowText("一个护身符.");
+                    player.health += 20;
                     StartCoroutine(Memory());
                     Destroy(barrier);
                 }
@@ -66,22 +67,22 @@ public class ContainerGrandParent : MonoBehaviour
 
     IEnumerator Memory()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         textManager.ShowText("这是。。。。奶奶高考前费了很大劲为我求来的保佑符");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("我当时刚考砸了一模，幸苦地刷题却等来了退步");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("一气之下我说了“老一辈人就是封建迷信”");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("然后把它扔在了垃圾桶里");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("那时的我是失去理智了吗。。。奶奶那么幸苦求来的");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("奶奶对不起，我一定伤了您的心了吧。");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         textManager.ShowText("家这个词，我仿佛更能理解了");
       
         
