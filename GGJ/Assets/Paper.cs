@@ -26,7 +26,7 @@ public class Paper : MonoBehaviour
             tip.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                textManager.ShowText("纸条上写着..");
+                textManager.ShowText("纸条上写着...对不起，我们还没想好谜题，先给你密码吧：2333");
                 tip.SetActive(false);
             }
         }
