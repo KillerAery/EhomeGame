@@ -14,17 +14,22 @@ public class Enemy : MonoBehaviour
     //辅助
     private Transform target;//玩家位置
     public bool isAngry;
+    private new Rigidbody2D rigidbody2D;
+
+    public float maxdamage = 50.0f;
+    private float damage = 0.0f;
 
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        Vector3 dr = target.position - transform.position;
+        Vector2 dr = target.position - transform.position;
         dr = dr.normalized;
-        transform.Translate(dr * k * moveSpeed * Time.deltaTime, Space.World);
+        rigidbody2D.velocity = dr * moveSpeed;
         //Move();
         //移动时根据朝向flip
         if (Mathf.Abs(dr.x) >= 0.01f)
@@ -35,7 +40,13 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().RecivedDamage(2.0f);
+            float d = 1.0f;
+            damage += d;
+            collision.gameObject.GetComponent<Player>().RecivedDamage(d);
+            if (damage >= maxdamage)
+            {
+                Die();
+            }
         }
     }
 
