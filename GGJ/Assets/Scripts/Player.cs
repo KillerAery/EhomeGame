@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     //是否持有大门钥匙
     [HideInInspector] public bool gatekey = false;
 
+    public GameObject Umbrella;
     public Light pointLight;
 
     private new Rigidbody2D rigidbody2D;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         pointLight.intensity = init_intensity * (health / 100.0f);
         Move();
         UmbrallaControll();
+        Umbrella.SetActive(handlingUmbrella);
     }
 
     public void RecivedDamage(float damage)
@@ -64,9 +66,13 @@ public class Player : MonoBehaviour
 
     private void UmbrallaControll()
     {
-        if (umbrella&&Input.GetKey(KeyCode.J))
+        if (umbrella)
         {
-            handlingUmbrella = true;
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                handlingUmbrella = !handlingUmbrella;
+                animator.SetBool("Handling",handlingUmbrella);
+            }
         }
     }
 

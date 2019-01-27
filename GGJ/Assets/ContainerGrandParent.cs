@@ -11,6 +11,8 @@ public class ContainerGrandParent : MonoBehaviour
     //是否被搜刮过
     public bool empty = false;
 
+    public GameObject barrier;
+
     public GameObject tip;
     private TextManager textManager;
 
@@ -44,6 +46,7 @@ public class ContainerGrandParent : MonoBehaviour
                 }
                 else if (amulet) {
                     textManager.ShowText("一个护身符。想起来这是奶奶给我高考前买的...balabala");
+                    Destroy(barrier);
                 }
                 else
                 {
