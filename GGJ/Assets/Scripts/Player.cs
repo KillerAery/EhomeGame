@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        moveAudio.clip = Audio[1];
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.Play();
+        }
         pointLight.intensity = init_intensity * (health / 100.0f);
         Move();
         UmbrallaControll();
@@ -44,12 +49,6 @@ public class Player : MonoBehaviour
 
     public void RecivedDamage(float damage)
     {
-        health -= damage;
-        if(health <= 0.0f)
-        {
-            health = 0.0f;
-            Die();
-        }
     }
 
     private void Move()
@@ -69,6 +68,7 @@ public class Player : MonoBehaviour
             {
                 moveAudio.Play();
             }
+
         }
         if (Mathf.Abs(y) >= 0.01f)
         {

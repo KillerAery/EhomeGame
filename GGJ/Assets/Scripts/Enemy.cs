@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private Transform target;//玩家位置
     public bool isAngry;
     private new Rigidbody2D rigidbody2D;
+    public AudioSource moveAudio;
+    public AudioClip[] Audio;
 
     public float maxdamage = 50.0f;
     private float damage = 0.0f;
@@ -36,6 +38,11 @@ public class Enemy : MonoBehaviour
         dr = dr.normalized;
         rigidbody2D.velocity = dr * moveSpeed;
         //Move();
+        moveAudio.clip = Audio[1];
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.Play();
+        }
         //移动时根据朝向flip
         if (Mathf.Abs(dr.x) >= 0.01f)
           transform.localScale = new Vector2(Mathf.Sign(dr.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
